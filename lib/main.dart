@@ -8,6 +8,7 @@ import 'dart:io';
 //import 'package:http/http.dart' as http;
 import 'package:dart_ping/dart_ping.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import 'package:magnetclient/ClientdData.dart';
 import 'package:magnetclient/register.dart';
 import 'package:magnetclient/speed_test.dart';
@@ -23,7 +24,8 @@ import 'recommand.dart';
 import 'register.dart';
 
 //Socket socket;
-ClientData client;
+//ClientData client = new Client();
+Map<String, Object> contactDetailsResult = Map();
 double _ping = 0, _ups = 0, _dws = 0;
 int _disc = 0;
 var _test_time = '01/01/1900 00:00';
@@ -47,6 +49,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'MAGNET',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -238,6 +241,18 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+// void nextScreen(BuildContext context) async{
+//   contactDetailsResult = await Navigator.of(context).push(MaterialPageRoute(
+//     builder: (_) {
+//       return ContactDetailsScreen(
+//           email: contactDetailsResult["email"] ?? "",
+//           phoneNumber: contactDetailsResult["phoneNumber"] ?? "",
+//           address: contactDetailsResult["address"] ?? "",
+//       );
+//     },
+//   ));
+// }
+
   Future<void> _launchInWebViewOrVC(String url) async {
     if (await canLaunch(url)) {
       await launch(
@@ -251,6 +266,14 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
+  void _navigateAndDisplaySelection(BuildContext context) async {
+    // Navigator.push returns a Future that completes after calling
+    // Navigator.pop on the Selection Screen.
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => SpeedTest()),
+    );
+  }
 //void _sendMsg() {}
   // Future<void> initPlatformState() async {
   //   _controller = WebviewController();

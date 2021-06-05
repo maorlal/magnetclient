@@ -14,25 +14,38 @@ class ClientData {
   int disconnections;
 }
 
-// int get disconnections {
-//   return _disconnections;
-// }
+int get disconnections {
+  return disconnections;
+}
 
-// double get download_speed {
-//   return _download_speed;
-// }
+double get download_speed {
+  return download_speed;
+}
 
-// double get upload_speed {
-//   return _upload_speed;
-// }
+double get upload_speed {
+  return upload_speed;
+}
 
-// double get ping {
-//   return _ping;
-// }
+double get ping {
+  return ping;
+}
 
-// int get paid_speed {
-//   return _paid_speed;
-// }
+int get paid_speed {
+  return paid_speed;
+}
+
+Client() {
+  int street_num;
+  String infrastructure;
+  String isp;
+  String infrastructure_type;
+  double paid_speed;
+  double download_speed;
+  double upload_speed;
+  double ping;
+  double internet_score;
+  int disconnections;
+}
 
 // double clinet_score(ClientData data) {
 //   double disconnections_score;

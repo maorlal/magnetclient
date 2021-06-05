@@ -10,6 +10,7 @@ import 'speed_test.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 class SpeedTest extends StatelessWidget {
+  String dd;
   final downloadSpeedController = TextEditingController();
   final uploadSpeedController = TextEditingController();
   final pingController = TextEditingController();
