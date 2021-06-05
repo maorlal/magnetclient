@@ -9,7 +9,7 @@ import 'ClientdData.dart';
 import 'speed_test.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
-class Recommandation extends StatelessWidget {
+class Register extends StatelessWidget {
   final adressController = TextEditingController();
   final paidSpeedController = TextEditingController();
   final infulstructureController = TextEditingController();
@@ -18,7 +18,7 @@ class Recommandation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Recommandation"),
+        title: Text("Register"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -29,7 +29,7 @@ class Recommandation extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
-                  'Enter adress: ',
+                  'Address: ',
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 Container(
@@ -115,12 +115,6 @@ class Recommandation extends StatelessWidget {
                 child: Text('submit'),
               ),
             ),
-            // Container(
-            //   child: ElevatedButton(
-            //     onPressed: () {},
-            //     child: Text('speed test'),
-            //   ),
-            // ),
           ],
         ),
       ),

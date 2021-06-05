@@ -9,16 +9,16 @@ import 'ClientdData.dart';
 import 'speed_test.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
-class Recommandation extends StatelessWidget {
-  final adressController = TextEditingController();
-  final paidSpeedController = TextEditingController();
-  final infulstructureController = TextEditingController();
-  final serviceProviderController = TextEditingController();
+class SpeedTest extends StatelessWidget {
+  final downloadSpeedController = TextEditingController();
+  final uploadSpeedController = TextEditingController();
+  final pingController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Recommandation"),
+        title: Text("Speed Test"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -29,13 +29,13 @@ class Recommandation extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
-                  'Enter adress: ',
+                  'Download Speed: ',
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 Container(
                   width: 200.0,
                   child: TextField(
-                    controller: adressController,
+                    controller: downloadSpeedController,
                     autofocus: true,
                   ),
                 ),
@@ -45,13 +45,13 @@ class Recommandation extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
-                  'speed paid for: ',
+                  'Upload Speed: ',
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 Container(
                   width: 200.0,
                   child: TextField(
-                    controller: paidSpeedController,
+                    controller: uploadSpeedController,
                     autofocus: true,
                   ),
                 ),
@@ -61,29 +61,13 @@ class Recommandation extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
-                  'infulstructure: ',
+                  'ping: ',
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 Container(
                   width: 200.0,
                   child: TextField(
-                    controller: infulstructureController,
-                    autofocus: true,
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text(
-                  'service provider: ',
-                  style: Theme.of(context).textTheme.headline6,
-                ),
-                Container(
-                  width: 200.0,
-                  child: TextField(
-                    controller: serviceProviderController,
+                    controller: pingController,
                     autofocus: true,
                   ),
                 ),
@@ -95,9 +79,9 @@ class Recommandation extends StatelessWidget {
                   try {
                     final socket = await Socket.connect('5.28.139.69', 5000);
                     print('open');
-                    var str = utf8.encode(adressController.text +
-                        paidSpeedController.text +
-                        infulstructureController.text);
+                    var str = utf8.encode(downloadSpeedController.text +
+                        uploadSpeedController.text +
+                        pingController.text);
                     socket.add(str);
                     print('sent: $str');
                     socket.listen((List<int> e) {
@@ -115,12 +99,6 @@ class Recommandation extends StatelessWidget {
                 child: Text('submit'),
               ),
             ),
-            // Container(
-            //   child: ElevatedButton(
-            //     onPressed: () {},
-            //     child: Text('speed test'),
-            //   ),
-            // ),
           ],
         ),
       ),

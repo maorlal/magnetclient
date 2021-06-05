@@ -21,7 +21,24 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+
+  dart_ping: ^6.0.0
+
+  socket_io_client: ^1.0.1
+
+  http: ^0.13.3
+
+  url_launcher: ^6.0.4
+  
   web_socket_channel:
+
+  internet_speed_test: ^1.1.2+1
+    
+  window_size:
+    git:
+      url: git://github.com/google/flutter-desktop-embedding.git
+      path: plugins/window_size
+
   flutter:
     sdk: flutter
 
